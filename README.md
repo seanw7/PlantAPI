@@ -1,5 +1,5 @@
 # PlantAPI
-CRUD REST API for plants. You can create plants with attatched genera names. 
+**CRUD REST API for plants. You can create plants with attatched genera names.**
 
 All of the end points require JWT token authentication in the header: {"Authorization" : JWT}
 
