@@ -23,6 +23,7 @@ GET /genus/<name> : retreives a list of plants under a specific genus in the dat
 
 POST /genus/<name> : creates a genus in the database.
 
-DEL /genus/<name> : deletes a genus by its name.
+DEL /genus/<name> : deletes a genus by its name. Can cause problems with floating entries in the plants table. Must delete plants 
+                    that are still attatched to the deleted genus in order to make proper table connections.
 
 GET /genera : retreieves a list of all genera and plants in the database linked to the genus.
