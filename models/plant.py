@@ -13,7 +13,7 @@ class PlantModel(db.Model):
     genus_id = db.Column(db.String(80), db.ForeignKey('genus.name'))
     genus = db.relationship('GenusModel')
 
-    url = "http://www.palmpedia.net/wiki/{}_{}".format(PlantModel.genus_id, PlantModel.name)
+    url = "http://www.palmpedia.net/wiki/{}_{}".format(genus_id, name)
 
     def __init__(self, name, quantity, price, genus_id):
         self.name = name
