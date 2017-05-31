@@ -1,6 +1,6 @@
 # copied from item.py
 from db import db
-from genus import GenusModel
+
 
 class PlantModel(db.Model):
     __tablename__ = "plants"
