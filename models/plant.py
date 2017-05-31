@@ -27,7 +27,7 @@ class PlantModel(db.Model):
         "url": self.make_url()}
 
     def make_url(self):
-        return "http://www.palmpedia.net/wiki/{}_{}".format(self.genus_id, self.name)
+        return "https://www.google.com/webhp#q={}+{}".format(self.genus_id, self.name)
 
     @classmethod
     def find_by_name(cls, name):
