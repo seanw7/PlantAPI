@@ -13,7 +13,7 @@ class GenusModel(db.Model):
         self.name = name
 
     def json(self):
-        return {"name": self.name, "plants": [plant.json() for plant in self.plants.all()]}
+        return {"genus": self.name, "species": [plant.json() for plant in self.plants.all()]}
 
     @classmethod
     def find_by_name(cls, name):
