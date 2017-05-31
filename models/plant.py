@@ -19,7 +19,7 @@ class PlantModel(db.Model):
         self.genus_id = genus_id
 
     def json(self):
-        return {"name": self.name, "price": self.price, "quantity": self.quantity}
+        return {"name": self.name, "price": self.price, "quantity": self.quantity, "value": self.quantity * self.price}
 
     @classmethod
     def find_by_name(cls, name):
