@@ -36,7 +36,7 @@ class Genus(Resource):
 
 
 class GenusList(Resource):
-    
-    @jwt_required()
+
+    #@jwt_required()
     def get(self):
         return {'genera': [genus.json() for genus in GenusModel.query.all()]}
