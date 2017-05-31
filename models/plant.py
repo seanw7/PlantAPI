@@ -13,16 +13,18 @@ class PlantModel(db.Model):
     genus_id = db.Column(db.String(80), db.ForeignKey('genus.name'))
     genus = db.relationship('GenusModel')
 
+    url = "http://www.palmpedia.net/wiki/{}_{}".format(self.genus_id, self.name)
+
     def __init__(self, name, quantity, price, genus_id, url):
         self.name = name
         self.quantity = quantity
         self.price = price
         self.genus_id = genus_id
-        self.url = "http://www.palmpedia.net/wiki/{}_{}".format(self.genus_id, self.name)
+        self.url = url
 
     def json(self):
         return {"name": self.name, "price": self.price, "quantity": self.quantity, "value": self.quantity * self.price, \
-        "url": self.url}
+        "url": url}
 
     @classmethod
     def find_by_name(cls, name):
