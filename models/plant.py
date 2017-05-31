@@ -22,7 +22,7 @@ class PlantModel(db.Model):
 
     def json(self):
         return {"name": self.name, "price": self.price, "quantity": self.quantity, "value": self.quantity * self.price, \
-        "url": {self.url}}
+        "url": self.url}
 
     @classmethod
     def find_by_name(cls, name):
