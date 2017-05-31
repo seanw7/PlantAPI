@@ -13,7 +13,7 @@ class PlantModel(db.Model):
     genus_id = db.Column(db.String(80), db.ForeignKey('genus.name'))
     genus = db.relationship('GenusModel')
 
-    def __init__(self, name, quantity, price, genus_id):
+    def __init__(self, name, quantity, price, genus_id, url):
         self.name = name
         self.quantity = quantity
         self.price = price
