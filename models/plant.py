@@ -24,7 +24,7 @@ class PlantModel(db.Model):
 
     def json(self):
         return {"name": self.name, "price": self.price, "quantity": self.quantity, "value": self.quantity * self.price, \
-        "url": make_url()}
+        "url": self.make_url()}
 
     def make_url(self):
         return "http://www.palmpedia.net/wiki/{}_{}".format(self.genus_id, self.name)
