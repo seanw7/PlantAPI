@@ -19,7 +19,8 @@ class PlantModel(db.Model):
         self.genus_id = genus_id
 
     def json(self):
-        return {"name": self.name, "price": self.price, "quantity": self.quantity, "value": self.quantity * self.price}
+        return {"name": self.name, "price": self.price, "quantity": self.quantity, "value": self.quantity * self.price, \
+        "url": {"http://www.palmpedia.net/wiki/{}_{}".format(genus_id, self.name)}}
 
     @classmethod
     def find_by_name(cls, name):
