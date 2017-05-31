@@ -15,12 +15,12 @@ class PlantModel(db.Model):
 
     url = "http://www.palmpedia.net/wiki/{}_{}".format(self.genus_id, self.name)
 
-    def __init__(self, name, quantity, price, genus_id, url):
+    def __init__(self, name, quantity, price, genus_id):
         self.name = name
         self.quantity = quantity
         self.price = price
         self.genus_id = genus_id
-        self.url = url
+
 
     def json(self):
         return {"name": self.name, "price": self.price, "quantity": self.quantity, "value": self.quantity * self.price, \
