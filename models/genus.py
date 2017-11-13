@@ -7,7 +7,7 @@ class GenusModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
 
-    plants = db.relationship('PlantModel', lazy='dynamic')
+    plants = db.relationship('PlantModel', lazy='dynamic', backref='PlantModel')
 
     def __init__(self, name):
         self.name = name

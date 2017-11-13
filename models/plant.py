@@ -10,16 +10,18 @@ class PlantModel(db.Model):
     quantity = db.Column(db.Float(precision=2))
     price = db.Column(db.Float(precision=2))
 
-    genus_id = db.Column(db.String(80), db.ForeignKey('genus.name'))
-    genus = db.relationship('GenusModel')
+    genus_name = db.Column(db.String(80), db.ForeignKey('genus.name'))#, nullable=False)
+    genus = db.relationship('GenusModel', backref="GenusModel")#, backref=backref('genus', uselist=False))
+
+    #db.ForeignKeyConstraint(['genus_name'],['genus.name'])
 
 
 
-    def __init__(self, name, quantity, price, genus_id):
+    def __init__(self, name, quantity, price, genus_name):
         self.name = name
         self.quantity = quantity
         self.price = price
-        self.genus_id = genus_id
+        self.genus_name = genus_name
         #url = "http://www.palmpedia.net/wiki/{}_{}".format(genus_id, name)
 
     def json(self):
@@ -27,7 +29,7 @@ class PlantModel(db.Model):
         "url": self.make_url()}
 
     def make_url(self):
-        return "https://www.google.com/webhp#q={}+{}".format(self.genus_id, self.name)
+        return "https://www.google.com/webhp#q={}+{}".format(self.genus_name, self.name)
 
     @classmethod
     def find_by_name(cls, name):

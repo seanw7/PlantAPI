@@ -1,5 +1,5 @@
 # PlantAPI
-**CRUD REST API for plants. You can create plants with attatched genera names.**
+**CRUD REST API for plants. You can create plants with attached genera names.**
 
 All of the end points require JWT token authentication in the header: {"Authorization" : JWT}
 
@@ -19,11 +19,11 @@ PUT /plant/<name> : creates a plant if it doesn't exist, otherwise updates the p
 
 DEL /plant/<name> : deletes a plant by its name.
 
-GET /genus/<name> : retreives a list of plants under a specific genus in the database.
+GET /genus/<name> : retrieves a list of plants under a specific genus in the database.
 
 POST /genus/<name> : creates a genus in the database.
 
-DEL /genus/<name> : deletes a genus by its name. Can cause problems with floating entries in the plants table. Must delete plants 
-                    that are still attatched to the deleted genus in order to make proper table connections.
+DEL /genus/<name> : deletes a genus by its name. Can cause problems with floating entries in the plants table. Must delete plants
+                    that are still attached to the deleted genus in order to make proper table connections.
 
-GET /genera : retreieves a list of all genera and plants in the database linked to the genus.
+GET /genera : retrieves a list of all genera and plants in the database linked to the genus.

@@ -1,0 +1,33 @@
+---
+resources:
+- name: resource-web-app
+  type: git
+  source:
+    #branch: master
+    #uri: https://github.com/cloudfoundry-community/simple-go-web-app.git
+    uri: https://github.com/seanw7/PlantAPI.git
+    # uri: git@github.com:cloudfoundry-community/simple-go-web-app.git
+    # private_key: |
+    #   -----BEGIN RSA PRIVATE KEY-----
+    #     >>>INSERT KEY HERE<<<
+    #   -----END RSA PRIVATE KEY-----
+
+- name: resource-deploy-web-app
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    skip_cert_check: true
+
+jobs:
+- name: job-deploy-app
+  serial: true
+  plan:
+  - {get: resource-web-app, trigger: true}
+  - put: resource-deploy-web-app
+    params:
+      manifest: resource-web-app/manifest.yml
+      path: resource-web-app

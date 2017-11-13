@@ -4,11 +4,31 @@ from flask_jwt import JWT
 
 from security import authenticate, identity
 from resources.user import UserRegister
-from resources.plant import Plant, PlantList
 from resources.genus import Genus, GenusList
+from resources.plant import Plant, PlantList
 
+import json
+import os
+
+# searches os envvars for "VCAP_SERVICES"
+vcap_config = os.getenv('VCAP_SERVICES', "")
+decoded_config = json.loads(vcap_config)
+
+# locate the cloudfoundry environment variables json
+mysql_creds = decoded_config['p-mysql'][0]['credentials']
+print(mysql_creds)
+
+# target and extract the mysql db uri
+if mysql_creds:
+    raw_uri = str(mysql_creds['uri'])
+    db_uri = mysql_url.strip('?reconnect=true')
+    print(db_uri)
+
+# initialize flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://1aOORcwTHasK5voa:teOLI9ECAfG0zjle@mysql-broker.local.pcfdev.io:3306/cf_a9565c87_75a9_4275_82ec_6b4f484abdf4'#?reconnect=true' # Works for local pcfdev
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'testKey'
 api = Api(app)

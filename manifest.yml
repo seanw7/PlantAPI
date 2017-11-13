@@ -1,0 +1,9 @@
+---
+applications:
+- name: plant-api-concourse
+  disk: 256M
+  memory: 256M
+  random-route: true
+  buildpack: python_buildpack
+  env:
+    PYTHONPACKAGENAME: plant-api-concourse
