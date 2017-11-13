@@ -5,5 +5,7 @@ applications:
   memory: 256M
   random-route: true
   buildpack: python_buildpack
+  services:
+    - mysql-test-db
   env:
     PYTHONPACKAGENAME: plant-api-concourse

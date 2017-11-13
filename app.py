@@ -19,10 +19,10 @@ mysql_creds = decoded_config['p-mysql'][0]['credentials']
 print(mysql_creds)
 
 # target and extract the mysql db uri
-if mysql_creds:
-    raw_uri = str(mysql_creds['uri'])
-    db_uri = mysql_url.strip('?reconnect=true')
-    print(db_uri)
+
+raw_uri = str(mysql_creds['uri'])
+db_uri = raw_uri.strip('?reconnect=true')
+print(db_uri)
 
 # initialize flask app
 app = Flask(__name__)
